@@ -17,7 +17,7 @@ namespace MSDKDataAccess
         internal Student FindStudent(int ID) {
             using (SqlCommand cmd = new SqlCommand("Select ID,FirstName,LastName,DOB from Student Where ID = @ID", _conn))
             {
-                cmd.Parameters.Add("@ID", SqlDbType.Int, ID);
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value=ID;
                 _conn.Open();
                 SqlDataReader dr =  cmd.ExecuteReader();
                 if (dr.Read())
