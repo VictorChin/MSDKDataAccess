@@ -38,7 +38,6 @@ namespace MSDKDataAccess
             using (SqlCommand cmd = new SqlCommand("Select ID,FirstName,LastName,DOB from Student Where ID = @ID", _conn))
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value=ID;
-                
                 SqlDataReader dr =  cmd.ExecuteReader();
                 if (dr.Read())
                 { return new Student { ID = dr.GetInt32(0),
