@@ -11,14 +11,34 @@ namespace MSDKDataAccess
     class DataAccess
     {
         private SqlConnection _conn;
-        public string ConnectionString { set { _conn = new SqlConnection(value); } }
+        public string ConnectionString { set { _conn = new SqlConnection(value);
+                _conn.Open();
+            } }
         internal List<Student> GetStudents()
-        { return new List<Student>(); }
+        {
+            List<Student> allStudents = new List<Student>();//brand new list
+            using (SqlCommand cmd = new SqlCommand("Select ID,FirstName,LastName,DOB from Student", _conn))
+            {
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Student aStudent = new Student
+                    {
+                        ID = dr.GetInt32(0),
+                        FirstName = dr.GetString(1),
+                        LastName = dr.GetString(2),
+                        _dob = dr.GetDateTime(3)
+                    };
+                    allStudents.Add(aStudent);
+                 }
+            }
+                return allStudents;
+        }
         internal Student FindStudent(int ID) {
             using (SqlCommand cmd = new SqlCommand("Select ID,FirstName,LastName,DOB from Student Where ID = @ID", _conn))
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value=ID;
-                _conn.Open();
+                
                 SqlDataReader dr =  cmd.ExecuteReader();
                 if (dr.Read())
                 { return new Student { ID = dr.GetInt32(0),
@@ -37,9 +57,9 @@ namespace MSDKDataAccess
             { cmd.Parameters.Add("@FirstName", SqlDbType.VarChar, 200).Value = s.FirstName;
                 cmd.Parameters.Add("@LastName", SqlDbType.VarChar, 200).Value = s.LastName;
                 cmd.Parameters.Add("@DOB", SqlDbType.Date, 200).Value = s._dob;
-                _conn.Open();
+              
                 cmd.ExecuteNonQuery();
-                _conn.Close();
+               
 
             }
             

@@ -13,8 +13,24 @@ namespace MSDKDataAccess
             DataAccess da = new DataAccess { ConnectionString = "Data Source=msdk.database.windows.net;Initial Catalog=MSDKLAB;Integrated Security=False;User ID=chinzilla;Password=Pa$$w0rd12345;Connect Timeout=15;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False" };
             //Student s = new Student() { FirstName = "Victor", LastName = "Chin", _dob = new DateTime(1975, 07, 20) };
             //da.AddStudent(s);
-            Student s  = da.FindStudent(15);
-            Console.ReadLine();
+            Console.WriteLine("Please enter student ID");
+            int input;
+
+            try
+            {
+                if (int.TryParse(Console.ReadLine(), out input))
+                {
+                    Student s = da.FindStudent(input);
+                    Console.WriteLine(s);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("Bad Student ID, please try again");
+            }
+            
         }
     }
 }
