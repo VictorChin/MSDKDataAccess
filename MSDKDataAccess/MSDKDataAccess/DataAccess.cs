@@ -32,7 +32,8 @@ namespace MSDKDataAccess
                     allStudents.Add(aStudent);
                  }
             }
-                return allStudents;
+                allStudents.Sort();
+                return (allStudents);
         }
         internal Student FindStudent(int ID) {
             using (SqlCommand cmd = new SqlCommand("Select ID,FirstName,LastName,DOB from Student Where ID = @ID", _conn))

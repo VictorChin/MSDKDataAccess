@@ -33,10 +33,10 @@ namespace MSDKDataAccess
             //} 
             #endregion
             var allStudents = da.GetStudents();
-            var q = from s in allStudents
-                    where s.LastName == "Chin"
-                    select s;
-            foreach (var item in q)
+            //var q = from s in allStudents
+            //        orderby s.Age
+            //        select s;
+            foreach (var item in allStudents)
             {
                 Console.WriteLine(item);
             }
