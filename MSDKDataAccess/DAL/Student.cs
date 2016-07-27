@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace MSDKDataAccess
+namespace DAL
 {
-    internal class Student : IComparable<Student>
+    public class Student : IComparable<Student>///Summary: This represents 
     {
         public override string ToString()
         {

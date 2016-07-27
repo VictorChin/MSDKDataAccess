@@ -6,15 +6,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MSDKDataAccess
+namespace DAL
 {
-    class DataAccess
+    public class DataAccess
     {
+        public DataAccess(string connString)
+        {
+            this._conn = new SqlConnection(connString);
+            this._conn.Open();
+        }
         private SqlConnection _conn;
         public string ConnectionString { set { _conn = new SqlConnection(value);
                 _conn.Open();
             } }
-        internal List<Student> GetStudents()
+        public List<Student> GetStudents()
         {
             List<Student> allStudents = new List<Student>();//brand new list
             using (SqlCommand cmd = new SqlCommand("Select ID,FirstName,LastName,DOB from Student", _conn))
@@ -31,11 +36,12 @@ namespace MSDKDataAccess
                     };
                     allStudents.Add(aStudent);
                  }
+                dr.Close();
             }
                 allStudents.Sort();
                 return (allStudents);
         }
-        internal Student FindStudent(int ID) {
+        public Student FindStudent(int ID) {
             using (SqlCommand cmd = new SqlCommand("Select ID,FirstName,LastName,DOB from Student Where ID = @ID", _conn))
             {
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value=ID;
@@ -51,7 +57,18 @@ namespace MSDKDataAccess
             }
                 
         }
-        internal void AddStudent(Student s)
+
+        public void DeleteStudent(int aStudentID)
+        {
+            using (SqlCommand cmd = new SqlCommand("delete from student where id =@ID", _conn))
+            {
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = aStudentID;
+
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void AddStudent(Student s)
         {
             using(SqlCommand cmd = new SqlCommand("insert into student(firstname,lastname,dob) values(@FirstName,@LastName,@dob)", _conn))
             { cmd.Parameters.Add("@FirstName", SqlDbType.VarChar, 200).Value = s.FirstName;
