@@ -121,6 +121,7 @@
     <None Include="Attendees.xss">
       <DependentUpon>Attendees.xsd</DependentUpon>
     </None>
+    <None Include="Attendence.xls" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
