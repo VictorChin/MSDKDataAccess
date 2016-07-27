@@ -125,6 +125,17 @@ namespace ImportExcel
             }
             
         }
+
+        private void button2_Click(object sender, RoutedEventArgs e)
+        {
+            AttendeeTableAdapter ata = new AttendeeTableAdapter();
+            var cmd = ata.Connection.CreateCommand();
+            
+            cmd.CommandText = "delete from attendee";
+            ata.Connection.Open();
+            cmd.ExecuteNonQuery();
+            ata.Connection.Close();
+        }
     }
   
 }
