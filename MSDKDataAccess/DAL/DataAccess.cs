@@ -16,9 +16,7 @@ namespace DAL
             this._conn.Open();
         }
         private SqlConnection _conn;
-        public string ConnectionString { set { _conn = new SqlConnection(value);
-                _conn.Open();
-            } }
+    
         public List<Student> GetStudents()
         {
             List<Student> allStudents = new List<Student>();//brand new list
