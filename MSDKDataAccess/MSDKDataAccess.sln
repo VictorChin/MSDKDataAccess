@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSDKDataAccess", "MSDKDataAccess\MSDKDataAccess.csproj", "{3A3D93A5-2000-4BF3-8AFB-B1347B46C16B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{0F812809-7A23-4A36-AACF-7BF8BDAEF0F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{3A3D93A5-2000-4BF3-8AFB-B1347B46C16B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A3D93A5-2000-4BF3-8AFB-B1347B46C16B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A3D93A5-2000-4BF3-8AFB-B1347B46C16B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F812809-7A23-4A36-AACF-7BF8BDAEF0F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F812809-7A23-4A36-AACF-7BF8BDAEF0F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F812809-7A23-4A36-AACF-7BF8BDAEF0F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F812809-7A23-4A36-AACF-7BF8BDAEF0F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
