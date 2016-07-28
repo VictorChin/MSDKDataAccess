@@ -53,13 +53,13 @@ namespace ImportExcel
     props["Provider"] = "Microsoft.ACE.OLEDB.12.0;";
     props["Extended Properties"] = "Excel 12.0 XML";
     props["Data Source"] = path;
+            // Get it here https://www.microsoft.com/en-in/download/details.aspx?id=23734
+            // XLS - Excel 2003 and Older
+            //props["Provider"] = "Microsoft.Jet.OLEDB.4.0";
+            //props["Extended Properties"] = "Excel 8.0";
+            //props["Data Source"] = "C:\\MyExcel.xls";
 
-    // XLS - Excel 2003 and Older
-    //props["Provider"] = "Microsoft.Jet.OLEDB.4.0";
-    //props["Extended Properties"] = "Excel 8.0";
-    //props["Data Source"] = "C:\\MyExcel.xls";
-
-    StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
 
     foreach (KeyValuePair<string, string> prop in props)
     {
